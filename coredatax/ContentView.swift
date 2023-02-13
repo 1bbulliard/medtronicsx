@@ -35,20 +35,21 @@ struct ContentView: View {
                                 .foregroundColor(Color.white)
                                 .background(Color.black.cornerRadius(10))
                                 .background(RoundedRectangle(cornerRadius: 14))
-                            NavigationLink("Pressure Gradient--> ", destination: nextview2())
+                            NavigationLink("Enter Daily Bladder log here--> ", destination: dailylog())
                             //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                                 .modify1()
                             //         Divider()
-                            NavigationLink("Hydrostatic Pressure---->", destination: nextview2())
+                            NavigationLink("Hydrostatic Pressure---->", destination: nextview3())
                                 .modify1()
                             //     Divider()
                         }
                         Group {
                             Group {
-                                NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: nextview2())
+                                NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: nextview3())
                                 NavigationLink("List view:", destination: listview())
                                 //        Divider()
-                              //  NavigationLink(“Send data->”, destination: sendit())
+                              //  NavigationLink(“Send xdata->”, destination: sendit())
+                                NavigationLink("Send text message", destination:sendit())
                                 //        Divider()
                                 
                             }
@@ -70,25 +71,94 @@ struct ContentView: View {
 }
         
         
-        struct nextview2: View {
+        struct dailylog: View {
             @State private var amt = ""
+            @State private var date = ""
+            @State private var time = ""
+            @State private var accident = ""
+            @State private var changeunderwear = ""
+            @State private var leak = ""
+            @State private var urgency = ""
+            @State private var soil = ""
+            @State private var void = ""
+            @State private var voidamt = ""
+            @State private var retamt = ""
+            
             var body: some View {
                 VStack{
                     ScrollView{
                         Group{
                             
-                            Text("Pressure Gradient - Using Mud Weight, lb/ft³:")
+                            Text("Daily log")
                                 .frame(width:380, height: 62, alignment: .leading)
                                 .modify3()
-                            Text("Enter mud weight/lb/ft³")
+                            
+                            Text("Enter Date")
                                 .frame(width:380, height: 62, alignment: .leading)
-                            
-                            TextField("Enter mud weight/lb/ft³", text: $amt)
-                            
+                            TextField("Date:", text: $date)
                                 .modify1()
-                            let amtx = (amt as NSString).doubleValue
+                            Text("Enter Time")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Time:", text: $time)
+                                .modify1()
+                            Text("Enter Accident")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Accident:", text: $accident)
+                                .modify1()
+                        }
+                        Group{
+                           
+                            Text("Change underwear")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Change underwear?", text: $changeunderwear)
+                                .modify1()
+                            
+                            Text("Leak (0,1,2,3)")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Leak (0,1,2,3)", text: $leak)
+                                .modify1()
+                            
+                            Text("Urgency (0,1,2,3,4)")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Urgency (0,1,2,3,4)", text: $urgency)
+                                .modify1()
+                            
+                            Text("Soil (y/n)")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Soil (y/n)", text: $soil)
+                                .modify1()
+                            
+                        }
+                            
+                        Group{
+                           
+                            Text("Void?(y/n)")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Void? (y/n)", text: $void)
+                                .modify1()
+                            
+                            Text("Void amt:")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Void amt?", text: $voidamt)
+                                .modify1()
+                            
+                            Text("Retain amt?")
+                                .frame(width:380, height: 62, alignment: .leading)
+                            TextField("Retain amt?", text: $retamt)
+                                .modify1()
+                            
+                           
+                            
+                        }
+                            
+                            
+                            
+                            
+                            
+                            
+                           // let amtx = (amt as NSString).doubleValue
                             Text("---------------")
-                            Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
+                          //  Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
                                 .frame(width:380, height: 62, alignment: .leading)
                                 .modify1()
                         }
@@ -98,7 +168,7 @@ struct ContentView: View {
                     }
                 }
             }
-        }
+        
         func psift2(parm1: Double, parm2: Double) -> Double {
             var total: Double = 0
             total = parm1 * 0.006944
