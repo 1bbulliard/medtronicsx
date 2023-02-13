@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DFE9599A2810A8A400BCD58A /* coredataxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE959992810A8A400BCD58A /* coredataxApp.swift */; };
+		DFE9599A2810A8A400BCD58A /* medtronics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE959992810A8A400BCD58A /* medtronics.swift */; };
 		DFE9599C2810A8A400BCD58A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9599B2810A8A400BCD58A /* ContentView.swift */; };
 		DFE9599E2810A8A500BCD58A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE9599D2810A8A500BCD58A /* Assets.xcassets */; };
 		DFE959A12810A8A500BCD58A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE959A02810A8A500BCD58A /* Preview Assets.xcassets */; };
@@ -16,8 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DFE959962810A8A400BCD58A /* coredatax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coredatax.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFE959992810A8A400BCD58A /* coredataxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coredataxApp.swift; sourceTree = "<group>"; };
+		DFE959962810A8A400BCD58A /* medtronics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = medtronics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFE959992810A8A400BCD58A /* medtronics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = medtronics.swift; sourceTree = "<group>"; };
 		DFE9599B2810A8A400BCD58A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DFE9599D2810A8A500BCD58A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFE959A02810A8A500BCD58A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		DFE959972810A8A400BCD58A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DFE959962810A8A400BCD58A /* coredatax.app */,
+				DFE959962810A8A400BCD58A /* medtronics.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,7 +55,7 @@
 		DFE959982810A8A400BCD58A /* coredatax */ = {
 			isa = PBXGroup;
 			children = (
-				DFE959992810A8A400BCD58A /* coredataxApp.swift */,
+				DFE959992810A8A400BCD58A /* medtronics.swift */,
 				DFE9599B2810A8A400BCD58A /* ContentView.swift */,
 				DFE9599D2810A8A500BCD58A /* Assets.xcassets */,
 				DFE959A22810A8A500BCD58A /* Persistence.swift */,
@@ -76,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DFE959952810A8A400BCD58A /* coredatax */ = {
+		DFE959952810A8A400BCD58A /* medtronics */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DFE959A92810A8A500BCD58A /* Build configuration list for PBXNativeTarget "coredatax" */;
+			buildConfigurationList = DFE959A92810A8A500BCD58A /* Build configuration list for PBXNativeTarget "medtronics" */;
 			buildPhases = (
 				DFE959922810A8A400BCD58A /* Sources */,
 				DFE959932810A8A400BCD58A /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = coredatax;
+			name = medtronics;
 			productName = coredatax;
-			productReference = DFE959962810A8A400BCD58A /* coredatax.app */;
+			productReference = DFE959962810A8A400BCD58A /* medtronics.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DFE959912810A8A400BCD58A /* Build configuration list for PBXProject "coredatax" */;
+			buildConfigurationList = DFE959912810A8A400BCD58A /* Build configuration list for PBXProject "medtronics" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DFE959952810A8A400BCD58A /* coredatax */,
+				DFE959952810A8A400BCD58A /* medtronics */,
 			);
 		};
 /* End PBXProject section */
@@ -146,7 +146,7 @@
 				DFE959A32810A8A500BCD58A /* Persistence.swift in Sources */,
 				DFE959A62810A8A500BCD58A /* coredatax.xcdatamodeld in Sources */,
 				DFE9599C2810A8A400BCD58A /* ContentView.swift in Sources */,
-				DFE9599A2810A8A400BCD58A /* coredataxApp.swift in Sources */,
+				DFE9599A2810A8A400BCD58A /* medtronics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +328,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DFE959912810A8A400BCD58A /* Build configuration list for PBXProject "coredatax" */ = {
+		DFE959912810A8A400BCD58A /* Build configuration list for PBXProject "medtronics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DFE959A72810A8A500BCD58A /* Debug */,
@@ -337,7 +337,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DFE959A92810A8A500BCD58A /* Build configuration list for PBXNativeTarget "coredatax" */ = {
+		DFE959A92810A8A500BCD58A /* Build configuration list for PBXNativeTarget "medtronics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DFE959AA2810A8A500BCD58A /* Debug */,
