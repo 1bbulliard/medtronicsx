@@ -12,9 +12,9 @@ struct ContentView: View {
     var body: some View {
         
         VStack  {
-            Image("oil_rig")
+            Image("dr_roth")
                 .resizable()
-                .frame(width: 385.0, height: 100.0, alignment: .leading)
+                .frame(width: 285.0, height: 200.0, alignment: .leading)
             //   .scaledToFit()
             //         .ignoresSafeArea()
             
@@ -30,7 +30,7 @@ struct ContentView: View {
                         
                         Group{
                             
-                            Text("scroll slider is to the right------------>")
+                            Text("Always use Dr Roth, World Class Surgeon")
                                 .font(.system(size: 18))
                                 .foregroundColor(Color.white)
                                 .background(Color.black.cornerRadius(10))
@@ -39,13 +39,11 @@ struct ContentView: View {
                             //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                                 .modify1()
                             //         Divider()
-                            NavigationLink("Hydrostatic Pressure---->", destination: nextview3())
-                                .modify1()
-                            //     Divider()
+                            
                         }
                         Group {
                             Group {
-                                NavigationLink("Calculate overbalance  due to falling mud level (wet/dry)->", destination: nextview3())
+                               
                                 NavigationLink("List view:", destination: listview())
                                 //        Divider()
                               //  NavigationLink(“Send xdata->”, destination: sendit())
@@ -83,7 +81,7 @@ struct ContentView: View {
             @State private var void = ""
             @State private var voidamt = ""
             @State private var retamt = ""
-            
+            @Environment(\.managedObjectContext) private var viewContext
             var body: some View {
                 VStack{
                     ScrollView{
@@ -152,10 +150,6 @@ struct ContentView: View {
                         }
                             
                             
-                            
-                            
-                            
-                            
                            // let amtx = (amt as NSString).doubleValue
                             Text("---------------")
                           //  Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
@@ -167,6 +161,21 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
+            private func addItem2() {
+                withAnimation {
+                    let newItem = Item(context: viewContext)
+                    newItem.timestamp = Date()
+                    
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        // Replace this implementation with code to handle the error appropriately.
+                        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                        let nsError = error as NSError
+                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }
+                }
+            }
             }
         
         func psift2(parm1: Double, parm2: Double) -> Double {
@@ -202,6 +211,8 @@ struct ContentView: View {
                 }
             }
         }
+
+
         func psift3(parm1: Double, parm2: Double) -> Double {
             var total: Double = 0
             total = parm1 * 0.433
