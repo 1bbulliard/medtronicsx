@@ -88,7 +88,7 @@ struct ContentView: View {
                     ScrollView{
                         Group{
                             
-                            Text("Daily log")
+                            Text("----->Daily log<-----")
                                 .frame(width:180, height: 42, alignment: .leading)
                                 .modify3()
                             
@@ -176,8 +176,6 @@ struct ContentView: View {
                         }
                         
                         }
-                        
-                        
                         Spacer()
                     }
                 }
@@ -188,8 +186,16 @@ struct ContentView: View {
                 withAnimation {
                     let newItem2 = Item2(context: viewContext)
                 //    newItem.timestamp = Date()
-                    newItem2.c_void = parm1
-                    newItem2.c_underwear = parm2
+                    newItem2.c_date = parm1
+                    newItem2.c_time = parm2
+                    newItem2.c_accident = parm3
+                    newItem2.c_underwear = parm4
+                    newItem2.c_leak = parm5
+                    newItem2.c_urgency = parm6
+                    newItem2.c_soil = parm7
+                    newItem2.c_void = parm8
+                    newItem2.c_voidamt = parm9
+                    newItem2.c_retamt = parm10
                     
                     do {
                         try viewContext.save()
@@ -298,16 +304,22 @@ struct ContentView: View {
                         ForEach(items) { item in
                             NavigationLink {
                                 //Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                                Text("Item at \(item.c_underwear!)")
-                                Text("just testing if i can put somethibg here")
-                                Text("just testing if i can put somethibg here")
-                                Text("just testing if i can put somethibg here")
-                                Text("just testing if i can put somethibg here")
-                                Text("just testing if i can put somethibg here")
+                               Text("Item Date: \(item.c_date!) ")
+                                Text("Item Time: \(item.c_time!) ")
+                               Text("Accident? \(item.c_accident!)")
+                                Text("Leak? \(item.c_leak!)")
+                                Text("Soil? \(item.c_soil!)")
+                               Text("change underwear? \(item.c_underwear!)")
+                               Text("Urgency? \(item.c_urgency!)")
+                               Text("voided? \(item.c_void!)")
+                                Text("Void Amt: \(item.c_voidamt!)")
+                                Text("Retain Amt: \(item.c_retamt!)")
+                               
+                                
                             } label: {
                               //Text(item.timestamp!, formatter: itemFormatter)
-                                Text("Item at \(item.c_underwear!)")
-                                
+                                Text("Log Date-Time \(item.c_date!) - \(item.c_time!)")
+                        
                             }
                         }
                         .onDelete(perform: deleteItems)
