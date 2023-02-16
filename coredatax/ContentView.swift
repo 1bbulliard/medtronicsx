@@ -9,12 +9,13 @@ import SwiftUI
 import CoreData
 struct ContentView: View {
     // @State var navigated = true
+    
     var body: some View {
         
         VStack  {
             Image("dr_roth")
                 .resizable()
-                .frame(width: 285.0, height: 200.0, alignment: .leading)
+                .frame(width: 180.0, height: 200.0, alignment: .leading)
             //   .scaledToFit()
             //         .ignoresSafeArea()
             
@@ -44,7 +45,7 @@ struct ContentView: View {
                         Group {
                             Group {
                                
-                                NavigationLink("List view:", destination: listview())
+                                NavigationLink("View Log:", destination: listview())
                                 //        Divider()
                               //  NavigationLink(“Send xdata->”, destination: sendit())
                                 NavigationLink("Send text message", destination:sendit())
@@ -74,7 +75,7 @@ struct ContentView: View {
             @State private var date = ""
             @State private var time = ""
             @State private var accident = ""
-            @State private var changeunderwear = ""
+            @State private var underwear = ""
             @State private var leak = ""
             @State private var urgency = ""
             @State private var soil = ""
@@ -88,83 +89,107 @@ struct ContentView: View {
                         Group{
                             
                             Text("Daily log")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                                 .modify3()
                             
                             Text("Enter Date")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Date:", text: $date)
-                                .modify1()
-                            Text("Enter Time")
-                                .frame(width:380, height: 62, alignment: .leading)
-                            TextField("Time:", text: $time)
-                                .modify1()
-                            Text("Enter Accident")
-                                .frame(width:380, height: 62, alignment: .leading)
-                            TextField("Accident:", text: $accident)
-                                .modify1()
+                                .modify2()
                         }
                         Group{
-                           
+                            Text("Enter Time")
+                                .frame(width:180, height: 42, alignment: .leading)
+                            TextField("Time:", text: $time)
+                                .modify2()
+                            Text("Enter Accident")
+                                .frame(width:180, height: 42, alignment: .leading)
+                            TextField("Accident:", text: $accident)
+                                .modify2()
+                        }
+                        Group{
+                            
                             Text("Change underwear")
-                                .frame(width:380, height: 62, alignment: .leading)
-                            TextField("Change underwear?", text: $changeunderwear)
-                                .modify1()
+                                .frame(width:180, height: 42, alignment: .leading)
+                            TextField("Change underwear?", text: $underwear)
+                                .modify2()
                             
                             Text("Leak (0,1,2,3)")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Leak (0,1,2,3)", text: $leak)
-                                .modify1()
-                            
+                                .modify2()
+                       
                             Text("Urgency (0,1,2,3,4)")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Urgency (0,1,2,3,4)", text: $urgency)
-                                .modify1()
+                                .modify2()
                             
                             Text("Soil (y/n)")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Soil (y/n)", text: $soil)
-                                .modify1()
+                                .modify2()
                             
                         }
-                            
+                        
                         Group{
-                           
+                            
                             Text("Void?(y/n)")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Void? (y/n)", text: $void)
-                                .modify1()
+                                .modify2()
                             
                             Text("Void amt:")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
+                        }
+                        Group{
                             TextField("Void amt?", text: $voidamt)
-                                .modify1()
+                                .modify2()
                             
                             Text("Retain amt?")
-                                .frame(width:380, height: 62, alignment: .leading)
+                                .frame(width:180, height: 42, alignment: .leading)
                             TextField("Retain amt?", text: $retamt)
-                                .modify1()
+                                .modify2()
                             
-                           
+                            
                             
                         }
-                            
-                            
-                           // let amtx = (amt as NSString).doubleValue
-                            Text("---------------")
+                        
+                        
+                        // let amtx = (amt as NSString).doubleValue
+                        Text("---------------")
+                    }
+                    Group{
                           //  Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
-                                .frame(width:380, height: 62, alignment: .leading)
-                                .modify1()
+                         //       .frame(width:380, height: 62, alignment: .leading)
+                          //      .modify1()
+                        Button("Click here to add your entry") {
+                            addItem2(parm1: date,
+                                     parm2: time,
+                                    parm3:accident,
+                                    parm4:underwear,
+                                     parm5:leak,
+                                   parm6:urgency,
+                                     parm7:soil,
+                            parm8:void,
+                                    parm9:voidamt,
+                                     parm10:retamt)
+                        }
+                        
                         }
                         
                         
                         Spacer()
                     }
                 }
-            private func addItem2() {
+            // func sendmessage(parm1: String, parm2: String) {
+            
+            private func addItem2( parm1: String, parm2: String, parm3: String, parm4: String, parm5: String, parm6: String, parm7: String ,
+                                   parm8: String, parm9: String, parm10: String ) {
                 withAnimation {
-                    let newItem = Item(context: viewContext)
-                    newItem.timestamp = Date()
+                    let newItem2 = Item2(context: viewContext)
+                //    newItem.timestamp = Date()
+                    newItem2.c_void = parm1
+                    newItem2.c_underwear = parm2
                     
                     do {
                         try viewContext.save()
@@ -251,15 +276,20 @@ struct ContentView: View {
         
         
         
-        
+        //
+//
+//
+//   once you make changes to core data file, you must do a navigate/project/ clean build..
+//   or you'll get error when trying to read the data.
+//
         
         struct listview: View {
             @Environment(\.managedObjectContext) private var viewContext
             
             @FetchRequest(
-                sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+                sortDescriptors: [NSSortDescriptor(keyPath: \Item2.c_underwear, ascending: true)],
                 animation: .default)
-            private var items: FetchedResults<Item>
+            private var items: FetchedResults<Item2>
             
             var body: some View {
                 Text("Medtronics is my WORLD!")
@@ -267,9 +297,17 @@ struct ContentView: View {
                     List {
                         ForEach(items) { item in
                             NavigationLink {
-                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                //Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                Text("Item at \(item.c_underwear!)")
+                                Text("just testing if i can put somethibg here")
+                                Text("just testing if i can put somethibg here")
+                                Text("just testing if i can put somethibg here")
+                                Text("just testing if i can put somethibg here")
+                                Text("just testing if i can put somethibg here")
                             } label: {
-                                Text(item.timestamp!, formatter: itemFormatter)
+                              //Text(item.timestamp!, formatter: itemFormatter)
+                                Text("Item at \(item.c_underwear!)")
+                                
                             }
                         }
                         .onDelete(perform: deleteItems)
@@ -290,8 +328,8 @@ struct ContentView: View {
             
             private func addItem() {
                 withAnimation {
-                    let newItem = Item(context: viewContext)
-                    newItem.timestamp = Date()
+                    let newItem = Item2(context: viewContext)
+                    newItem.timestamp2 = Date()
                     
                     do {
                         try viewContext.save()
@@ -364,7 +402,8 @@ struct Modify1: ViewModifier {
             struct Modify2: ViewModifier {
                 func body(content: Content) -> some View {
                     content
-                        .frame(width:380, height: 62, alignment: .leading)
+                        .frame(width:180, height: 32, alignment: .leading)
+                    // was 380 62
                     //   .frame(width:250, height: 42, alignment: .leading)
                         .font(.system(size: 10))
                         .foregroundColor(Color.black)
