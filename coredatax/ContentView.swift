@@ -31,12 +31,15 @@ struct ContentView: View {
                         
                         Group{
                             
-                            Text("Always use Dr Roth, World Class Surgeon")
+                            Text("Always use Dr Roth")
+                            Text("(World Class Surgeon)")
+                            Text("And Super Nurse Danielle (RN)")
+                            Text(" ")
                                 .font(.system(size: 18))
                                 .foregroundColor(Color.white)
                                 .background(Color.black.cornerRadius(10))
                                 .background(RoundedRectangle(cornerRadius: 14))
-                            NavigationLink("Enter Daily Bladder log here--> ", destination: dailylog())
+                            NavigationLink("Enter Daily Bladder log -> ", destination: dailylog())
                             //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                                 .modify1()
                             //         Divider()
@@ -45,10 +48,10 @@ struct ContentView: View {
                         Group {
                             Group {
                                
-                                NavigationLink("View Log:", destination: listview())
+                                NavigationLink("View Log->", destination: listview())
                                 //        Divider()
                               //  NavigationLink(“Send xdata->”, destination: sendit())
-                                NavigationLink("Send text message", destination:sendit())
+                                NavigationLink("Send text message->", destination:sendit())
                                 //        Divider()
                                 
                             }
@@ -82,50 +85,51 @@ struct ContentView: View {
             @State private var void = ""
             @State private var voidamt = ""
             @State private var retamt = ""
+            @State private var worked = true
             @Environment(\.managedObjectContext) private var viewContext
             var body: some View {
                 VStack{
                     ScrollView{
                         Group{
                             
-                            Text("----->Daily log<-----")
-                                .frame(width:180, height: 42, alignment: .leading)
+                            Text("-->Daily log<--")
+                                .frame(width:180, height: 22, alignment: .leading)
                                 .modify3()
                             
                             Text("Enter Date")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Date:", text: $date)
                                 .modify2()
                         }
                         Group{
                             Text("Enter Time")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Time:", text: $time)
                                 .modify2()
-                            Text("Enter Accident")
-                                .frame(width:180, height: 42, alignment: .leading)
+                            Text("Accident(Y/n)?")
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Accident:", text: $accident)
                                 .modify2()
                         }
                         Group{
                             
-                            Text("Change underwear")
-                                .frame(width:180, height: 42, alignment: .leading)
+                            Text("Chg underwear?(y/n)")
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Change underwear?", text: $underwear)
                                 .modify2()
                             
                             Text("Leak (0,1,2,3)")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Leak (0,1,2,3)", text: $leak)
                                 .modify2()
                        
                             Text("Urgency (0,1,2,3,4)")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Urgency (0,1,2,3,4)", text: $urgency)
                                 .modify2()
                             
                             Text("Soil (y/n)")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Soil (y/n)", text: $soil)
                                 .modify2()
                             
@@ -134,19 +138,19 @@ struct ContentView: View {
                         Group{
                             
                             Text("Void?(y/n)")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Void? (y/n)", text: $void)
                                 .modify2()
                             
                             Text("Void amt:")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                         }
                         Group{
                             TextField("Void amt?", text: $voidamt)
                                 .modify2()
                             
                             Text("Retain amt?")
-                                .frame(width:180, height: 42, alignment: .leading)
+                                .frame(width:180, height: 22, alignment: .leading)
                             TextField("Retain amt?", text: $retamt)
                                 .modify2()
                             
@@ -162,6 +166,8 @@ struct ContentView: View {
                           //  Text("PSI/ft: \(psift2(parm1: amtx, parm2: 2))")
                          //       .frame(width:380, height: 62, alignment: .leading)
                           //      .modify1()
+                        Text ("--------------")
+                        Text ("   ")
                         Button("Click here to add your entry") {
                             addItem2(parm1: date,
                                      parm2: time,
@@ -177,14 +183,16 @@ struct ContentView: View {
                         
                         }
                         Spacer()
+                   
                     }
                 }
             // func sendmessage(parm1: String, parm2: String) {
             
             private func addItem2( parm1: String, parm2: String, parm3: String, parm4: String, parm5: String, parm6: String, parm7: String ,
-                                   parm8: String, parm9: String, parm10: String ) {
+                                   parm8: String, parm9: String, parm10: String  ) {
                 withAnimation {
                     let newItem2 = Item2(context: viewContext)
+                 
                 //    newItem.timestamp = Date()
                     newItem2.c_date = parm1
                     newItem2.c_time = parm2
@@ -196,17 +204,24 @@ struct ContentView: View {
                     newItem2.c_void = parm8
                     newItem2.c_voidamt = parm9
                     newItem2.c_retamt = parm10
-                    
+                     worked = true
                     do {
                         try viewContext.save()
                     } catch {
+                        worked = false
                         // Replace this implementation with code to handle the error appropriately.
                         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                         let nsError = error as NSError
                         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                   
                     }
+                    
+                  
                 }
+                
             }
+            
+
             }
         
         func psift2(parm1: Double, parm2: Double) -> Double {
@@ -383,9 +398,9 @@ struct Modify1: ViewModifier {
         content
         //  .multilineTextAlignment(.leading)
         //    .frame(width:380, height: 62, alignment: .leading)
-            .frame(width:380, height: 30, alignment: .center)
+            .frame(width:300, height: 60, alignment: .center)
         //     .frame(width:250, height: 42, alignment: .leading)
-            .font(.system(size: 11))
+            .font(.system(size: 22))
             .foregroundColor(Color.black)
             .background(Color.teal.cornerRadius(10))
             .background(RoundedRectangle(cornerRadius: 14))
@@ -414,10 +429,10 @@ struct Modify1: ViewModifier {
             struct Modify2: ViewModifier {
                 func body(content: Content) -> some View {
                     content
-                        .frame(width:180, height: 32, alignment: .leading)
+                  //      .frame(width:260, height: 52, alignment: .leading)
                     // was 380 62
                     //   .frame(width:250, height: 42, alignment: .leading)
-                        .font(.system(size: 10))
+                        .font(.system(size: 22))
                         .foregroundColor(Color.black)
                         .background(Color.teal.cornerRadius(10))
                         .background(RoundedRectangle(cornerRadius: 14))
