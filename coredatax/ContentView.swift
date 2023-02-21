@@ -32,13 +32,17 @@ struct ContentView: View {
                         Group{
                             
                             Text("Always use Dr Roth")
+                            
                             Text("(World Class Surgeon)")
                             Text("And Super Nurse Danielle (RN)")
-                            Text(" ")
-                                .font(.system(size: 18))
+                            Text(" ") }
+                                .font(.system(size: 25))
                                 .foregroundColor(Color.white)
                                 .background(Color.black.cornerRadius(10))
                                 .background(RoundedRectangle(cornerRadius: 14))
+                       
+                        Group {
+                            
                             NavigationLink("Enter Daily Bladder log -> ", destination: dailylog())
                             //         .frame(width: 255.0, height: 150.0, alignment: .leading)
                                 .modify1()
@@ -52,6 +56,7 @@ struct ContentView: View {
                                 //        Divider()
                               //  NavigationLink(“Send xdata->”, destination: sendit())
                                 NavigationLink("Send text message->", destination:sendit())
+                                NavigationLink("Build file->", destination:buildfile())
                                 //        Divider()
                                 
                             }
@@ -92,7 +97,7 @@ struct ContentView: View {
                     ScrollView{
                         Group{
                             
-                            Text("-->Daily log<--")
+                            Text("-Daily log-")
                                 .frame(width:180, height: 22, alignment: .leading)
                                 .modify3()
                             
@@ -229,6 +234,90 @@ struct ContentView: View {
             total = parm1 * 0.006944
             return total}
         
+struct buildfile: View   {
+    @State private var amt = ""
+    var body: some View {
+        VStack  {
+            ScrollView{
+                Group{
+                    
+                    
+                    Text("building file:")
+                        .frame(width:380, height: 62, alignment: .leading)
+                    
+            //        Text("Enter mud weight/specific gravity:")
+             ////           .frame(width:380, height: 62, alignment: .leading)
+              //      TextField("Enter mud weight/specific gravity", text: $amt)
+                    
+                    
+              //      let amtx = (amt as NSString).doubleValue
+                    Text("------------")
+                //    Text("PSI/ft: \(psift3(parm1: amtx, parm2: 2))")
+                //        .frame(width:380, height: 62, alignment: .leading)
+                    
+                    let workedx = createfile(parm1: 1, parm2: 1)
+                    if workedx == true {
+                        Text(" file status of create: worked")
+                     //   writeFile(outputFile: "xtest", stringData: "test")
+                    } else {
+                        Text("file status of create: bad")
+                    }
+                    
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+ 
+func createfile(parm1: Double, parm2: Double) -> Bool {
+  
+    var worked = true
+ /*   let filePath = NSHomeDirectory() + "/bobtest.txt"
+    if (FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)) {
+        print("File created successfully.")
+    } else {
+        worked = false
+        print("File not created.")
+    }*/
+    let filePath = NSHomeDirectory() + "/Documents/" + "xtest.txt"
+    if (FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)) {
+        print("File created successfully.")
+        writeFile(outputFile: "xtest", stringData: "test")
+    } else {
+        worked = false 
+        print("File not created.")
+    }
+    
+  
+    return worked}
+
+func writeFile(outputFile:String, stringData: String) {
+
+  //  let fileExtension = outputFile.fileExtension()
+//let fileName = outputFile.fileName()
+  let fileExtension = "txt"
+    let fileName = outputFile
+let fileURL = try! FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor:nil,create: true)
+let outputFile = fileURL.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
+
+    guard let data = stringData.data(using: .utf8) else {
+    print("unable to convert string to data")
+return
+}
+do{
+try data.write(to: outputFile)
+print ("data written: \(data) ")
+
+}
+    catch
+    {
+    print(error.localizedDescription)
+}
+}
+
+
+
         struct nextview3: View   {
             @State private var amt = ""
             var body: some View {
@@ -269,7 +358,7 @@ struct ContentView: View {
             @State var numbertomessage = ""
             @State var message = ""
             var body: some View {
-                Text("For problems, issues, law suits or copyright infringements,")
+                Text("For HIPPA law violations, problems, issues, law suits or copyright infringements,")
                     .font(.headline)
                 Text("please contact Gabriel Bulliard at 3372778386")
                     .font(.headline)
