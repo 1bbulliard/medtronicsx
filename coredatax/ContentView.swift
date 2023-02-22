@@ -397,7 +397,7 @@ print ("data written: \(data) ")
         
         struct listview: View {
             @Environment(\.managedObjectContext) private var viewContext
-            
+            // got sort working w 2 keys
             @FetchRequest(
                 sortDescriptors: [NSSortDescriptor(keyPath: \Item2.c_date, ascending: true),
                                   NSSortDescriptor(keyPath: \Item2.c_time, ascending: true)
