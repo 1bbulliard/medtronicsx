@@ -15,7 +15,9 @@ struct ContentView: View {
         VStack  {
             Image("dr_roth")
                 .resizable()
-                .frame(width: 180.0, height: 200.0, alignment: .leading)
+                .frame(width: 150.0, height: 150.0, alignment: .leading)
+            
+            // width was 180; height was 200
             //   .scaledToFit()
             //         .ignoresSafeArea()
             
@@ -397,7 +399,9 @@ print ("data written: \(data) ")
             @Environment(\.managedObjectContext) private var viewContext
             
             @FetchRequest(
-                sortDescriptors: [NSSortDescriptor(keyPath: \Item2.c_underwear, ascending: true)],
+                sortDescriptors: [NSSortDescriptor(keyPath: \Item2.c_date, ascending: true),
+                                  NSSortDescriptor(keyPath: \Item2.c_time, ascending: true)
+                                 ],
                 animation: .default)
             private var items: FetchedResults<Item2>
             
